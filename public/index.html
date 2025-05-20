@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Tic-Tac-Toe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <!-- Authentication Section -->
+        <div class="auth-container" id="auth-container">
+            <div class="auth-toggle">
+                <button class="auth-btn active" id="login-toggle">Login</button>
+                <button class="auth-btn" id="register-toggle">Register</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <input type="text" id="login-username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="login-password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p id="login-message" class="auth-message"></p>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form hidden">
+                <h2>Register</h2>
+                <div class="form-group">
+                    <input type="text" id="register-username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="register-email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="register-password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <p id="register-message" class="auth-message"></p>
+            </form>
+        </div>
+
+        <!-- Game Dashboard -->
+        <div class="dashboard hidden" id="dashboard">
+            <div class="user-info">
+                <h2>Welcome, <span id="username-display"></span>!</h2>
+                <button id="logout-btn" class="btn btn-small">Logout</button>
+            </div>
+            
+            <div class="dashboard-actions">
+                <button id="create-game-btn" class="btn">Create New Game</button>
+                <button id="join-game-btn" class="btn">Join Game</button>
+                <button id="my-games-btn" class="btn">My Games</button>
+                <button id="leaderboard-btn" class="btn">Leaderboard</button>
+            </div>
+            
+            <!-- Available Games -->
+            <div id="available-games" class="game-list hidden">
+                <h3>Available Games</h3>
+                <div id="games-container" class="games-container"></div>
+            </div>
+            
+            <!-- My Games -->
+            <div id="my-games" class="game-list hidden">
+                <h3>My Games</h3>
+                <div id="my-games-container" class="games-container"></div>
+            </div>
+            
+            <!-- Leaderboard -->
+            <div id="leaderboard" class="game-list hidden">
+                <h3>Leaderboard</h3>
+                <div id="leaderboard-container" class="leaderboard-container"></div>
+            </div>
+        </div>
+
+        <!-- Game Section -->
+        <div class="game-section hidden" id="game-section">
+            <div class="game-header">
+                <h2>Game #<span id="game-id"></span></h2>
+                <p class="game-info" id="game-info"></p>
+                <p class="player-info">
+                    <span id="player1-name"></span> (X) vs 
+                    <span id="player2-name"></span> (O)
+                </p>
+            </div>
+
+            <div class="tic-tac-toe" id="game-board">
+                <div class="box box1" data-index="0"></div>
+                <div class="box box2" data-index="1"></div>
+                <div class="box box3" data-index="2"></div>
+                <div class="box box4" data-index="3"></div>
+                <div class="box box5" data-index="4"></div>
+                <div class="box box6" data-index="5"></div>
+                <div class="box box7" data-index="6"></div>
+                <div class="box box8" data-index="7"></div>
+                <div class="box box9" data-index="8"></div>
+            </div>
+
+            <button class="btn" id="back-to-dashboard">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
